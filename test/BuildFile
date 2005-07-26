@@ -1,0 +1,5 @@
+<use name=GeometryReaders/XMLIdealGeometryESSource>
+<use name=FWCore/Framework>                                                                                                                                                                                    
+<flags SEAL_PLUGIN_NAME="testGeometryReadersXMLIdealGeometryESSource">
+<library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
+</library>
