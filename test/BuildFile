@@ -2,6 +2,7 @@
 <use name=Geometry/Records>
 <use name=DetectorDescription/Core>
 <use name=DetectorDescription/CoreImpl>
+<use name=DetectorDescription/OfflineDBLoader>
 <flags SEAL_PLUGIN_NAME="testGeometryReadersXMLIdealGeometryESSource">
 <library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
 </library>
