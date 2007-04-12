@@ -4,6 +4,6 @@
 <use name=DetectorDescription/Core>
 <use name=DetectorDescription/CoreImpl>
 <use name=DetectorDescription/OfflineDBLoader>
-<flags SEAL_PLUGIN_NAME="testGeometryReadersXMLIdealGeometryESSource">
+<flags EDM_PLUGIN=1>
 <library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
 </library>
