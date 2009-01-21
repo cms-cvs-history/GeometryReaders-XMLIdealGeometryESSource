@@ -2,7 +2,12 @@
 <use name=Geometry/Records>
 <use name=MagneticField/Records>
 <use name=DetectorDescription/Core>
+<use name=DetectorDescription/Parser>
 <use name=DetectorDescription/OfflineDBLoader>
+<use name=CondFormats/GeometryObjects>
 <flags EDM_PLUGIN=1>
 <library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
 </library>
+<library file=TestGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource2>
+</library>
+<bin file=testprog.cc></bin>
