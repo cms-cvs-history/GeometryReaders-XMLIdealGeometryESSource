@@ -10,4 +10,6 @@
 </library>
 <library file=TestGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource2>
 </library>
+<library file=TestIdealGeometryESProducer.cc>
+</library>
 <bin file=testprog.cc></bin>
