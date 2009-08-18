@@ -32,7 +32,7 @@ XMLIdealGeometryESSource::XMLIdealGeometryESSource(const edm::ParameterSet & p):
 XMLIdealGeometryESSource::~XMLIdealGeometryESSource() {
   if(cpvavailable_){
     DDCompactView cpv;
-    cpv.clear();
+    //    cpv.clear();
   }
 }
 
