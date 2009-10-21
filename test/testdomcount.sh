@@ -29,7 +29,7 @@ echo "START - All messages in this script pertain to geometry data described in 
 #ASSUMPTIONS:  1.  relative path between documents (xml) and schema (DetectorDescription/Schema/DDLSchema.xsd)
 #                  are no more than 4 away, i.e. ../../../../ MAX (for normal/cmsextent.xml files)
 #grep ".xml" $geomxml | sed "{s/'//g}" | sed '{s/,//g}' | sed '{s/ //g}' | sed '{s/\t//g}' | sed '{s/geomXMLFiles=cms.vstring(//g}' | sed '{s/)//g}' | grep -v "#" >! /tmp/tmpcmsswdddxmlfileslist
-set whst=`(grep ".xml" $geomxml | sed "{s/'//g}" | sed '{s/,//g}' | sed '{s/ //g}' | sed '{s/\t//g}' | sed '{s/geomXMLFiles=cms.vstring(//g}' | sed '{s/)//g}' | grep -v "#" )`
+set whst=`(grep ".xml" $geomxml | sed "{s/'//g}" | sed '{s/,//g}' | sed '{s/ //g}' | sed '{s/\t//g}' | sed '{s/geomXMLFiles=cms.vstring(//g}'  | sed '{s/+cms.vstring(//g}' | sed '{s/)//g}' | grep -v "#" )`
 #echo $whst
 rm -f dcorig.out
 touch dcorig.out
