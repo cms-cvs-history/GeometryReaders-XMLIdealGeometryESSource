@@ -31,7 +31,7 @@ echo "START - All messages in this script pertain to geometry data described in 
 #grep ".xml" $geomxml | sed "{s/'//g}" | sed '{s/,//g}' | sed '{s/ //g}' | sed '{s/\t//g}' | sed '{s/geomXMLFiles=cms.vstring(//g}' | sed '{s/)//g}' | grep -v "#" >! /tmp/tmpcmsswdddxmlfileslist
 set whst=`(grep ".xml" $geomxml | sed "{s/'//g}" | sed '{s/,//g}' | sed '{s/ //g}' | sed '{s/\t//g}' | sed '{s/geomXMLFiles=cms.vstring(//g}' | sed '{s/)//g}' | grep -v "#" )`
 #echo $whst
-rm dcorig.out
+rm -f dcorig.out
 touch dcorig.out
 if ( -e "${CMSSW_BASE}/src/DetectorDescription/Schema/DDLSchema.xsd" ) then
     set schpath = `(echo "file://${CMSSW_BASE}/src/DetectorDescription/Schema/DDLSchema.xsd")`
@@ -53,7 +53,7 @@ set schpath = `(echo $schpath | sed '{s/\//\\\//g}')`
 	    endif
 	    sed -i "{s/..\/..\/..\/DetectorDescription\/Schema\/DDLSchema.xsd/${schpath}/g}" $fn
 	    DOMCount -v=always -n -s -f $fn >>& dcorig.out
-	    rm $fn
+	    rm -f $fn
 	else
 	    if ( -e $CMSSW_RELEASE_BASE/src/$l ) then
 		set dp = `(echo "${l}" | awk -F\/ '{print NF}')`
@@ -66,7 +66,7 @@ set schpath = `(echo $schpath | sed '{s/\//\\\//g}')`
 		endif
 		sed -i "{s/..\/..\/..\/DetectorDescription\/Schema\/DDLSchema.xsd/${schpath}/g}" $fn
 		DOMCount -v=always -n -s -f $fn >>& dcorig.out
-		rm $fn
+		rm -f $fn
 	    else
 		echo "Error file " $l " not found in " $CMSSW_RELEASE_BASE "/src or " $CMSSW_BASE "/src" >>& dcorig.out
 	    endif
@@ -82,5 +82,3 @@ else
 endif
 
 echo "ALL DONE!"
-
-
