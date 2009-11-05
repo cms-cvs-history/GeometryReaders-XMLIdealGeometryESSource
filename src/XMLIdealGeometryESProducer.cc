@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.4 2009/08/24 15:37:19 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.7 2009/11/05 17:15:51 case Exp $
 //
 //
 
@@ -41,13 +41,10 @@
 #include "DetectorDescription/Core/interface/DDSpecifics.h"
 #include "DetectorDescription/Base/interface/DDRotationMatrix.h"
 
-
-namespace DDI {
-  class Material;
-  class Solid;
-  class LogicalPart;
-  class Specific;
-}
+#include "DetectorDescription/Core/src/Material.h"
+#include "DetectorDescription/Core/src/Solid.h"
+#include "DetectorDescription/Core/src/LogicalPart.h"
+#include "DetectorDescription/Core/src/Specific.h"
 
 //
 // class decleration
@@ -67,11 +64,11 @@ private:
   std::string rootDDName_; // this must be the form namespace:name
     // 2009-07-09 memory patch
     // for copying and protecting DD Store's after parsing is complete.
-    DDI::Store<DDName, DDI::Material*>::registry_type matStore_;
-    DDI::Store<DDName, DDI::Solid*>::registry_type solidStore_;
-    DDI::Store<DDName, DDI::LogicalPart*>::registry_type lpStore_;
-    DDI::Store<DDName, DDI::Specific*>::registry_type specStore_;
-    DDI::Store<DDName, DDRotationMatrix*>::registry_type rotStore_;    
+    DDI::Store<DDName, DDI::Material*> matStore_;
+    DDI::Store<DDName, DDI::Solid*> solidStore_;
+    DDI::Store<DDName, DDI::LogicalPart*> lpStore_;
+    DDI::Store<DDName, DDI::Specific*> specStore_;
+    DDI::Store<DDName, DDRotationMatrix*> rotStore_;    
 
 };
 
