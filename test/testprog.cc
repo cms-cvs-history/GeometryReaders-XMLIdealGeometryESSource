@@ -11,7 +11,8 @@ int main(int argc, char *argv[]) {
   GeometryFile* g = new GeometryFile(fn, true);
   // above does a read already...    g->read("fred.xml");
   std::cout << "about to get the parser." << std::endl;
-  DDLParser* ddparser = DDLParser::instance();
+  DDCompactView cpv;
+  DDLParser ddparser(cpv);// * ddparser = DDLParser::instance();
   DDRootDef::instance().set(DDName("cms:OCMS"));
   std::cout << "about to try to parse the blob." << std::endl;
 
@@ -24,5 +25,5 @@ int main(int argc, char *argv[]) {
   std::vector<unsigned char> tb;
   g->getUncompressedBlob(tb);
   std::cout << "g->size() = " << g->size() << "  tb.size() = " << tb.size() << std::endl;
-  ddparser->parse(tb, g->size());
+  ddparser.parse(tb, g->size());
 }
