@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.7 2009/11/05 17:15:51 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.5.2.1 2009/11/05 19:50:08 case Exp $
 //
 //
 
@@ -62,6 +62,7 @@ private:
   // ----------member data ---------------------------
   //  std::string label_;
   std::string rootDDName_; // this must be the form namespace:name
+  std::string geomLabel_;
     // 2009-07-09 memory patch
     // for copying and protecting DD Store's after parsing is complete.
     DDI::Store<DDName, DDI::Material*> matStore_;
@@ -84,8 +85,8 @@ private:
 // constructors and destructor
 //
 XMLIdealGeometryESProducer::XMLIdealGeometryESProducer(const edm::ParameterSet& iConfig)
-  :   rootDDName_(iConfig.getParameter<std::string>("rootDDName"))
-  //  :   label_(iConfig.getUntrackedParameter<std::string>("label","")),
+  :   rootDDName_(iConfig.getParameter<std::string>("rootDDName")),
+      geomLabel_(iConfig.getParameter<std::string>("geomLabel"))
 {
    //the following line is needed to tell the framework what
    // data is being produced
@@ -115,7 +116,7 @@ XMLIdealGeometryESProducer::produce(const IdealGeometryRecord& iRecord)
    using namespace edm::es;
 
    edm::ESHandle<GeometryFile> gdd;
-   iRecord.getRecord<GeometryFileRcd>().get( "", gdd );
+   iRecord.getRecord<GeometryFileRcd>().get( geomLabel_, gdd );
 
    DDLParser * parser = DDLParser::instance();
    parser->getDDLSAX2FileHandler()->setUserNS(true);
