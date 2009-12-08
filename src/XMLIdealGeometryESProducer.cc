@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.5.2.1 2009/11/05 19:50:08 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.5.2.2 2009/12/04 00:42:42 case Exp $
 //
 //
 
@@ -27,6 +27,7 @@
 #include "FWCore/Framework/interface/ESProducer.h"
 
 #include "FWCore/Framework/interface/ESHandle.h"
+//#include FWCore/Utilities/interface/ESInputTag.h //maybe
 
 #include "DetectorDescription/Core/interface/DDCompactView.h"
 #include "DetectorDescription/Core/interface/DDRoot.h"
@@ -62,7 +63,8 @@ private:
   // ----------member data ---------------------------
   //  std::string label_;
   std::string rootDDName_; // this must be the form namespace:name
-  std::string geomLabel_;
+  const edm::ESInputTag geomLabel_;
+
     // 2009-07-09 memory patch
     // for copying and protecting DD Store's after parsing is complete.
     DDI::Store<DDName, DDI::Material*> matStore_;
@@ -86,7 +88,7 @@ private:
 //
 XMLIdealGeometryESProducer::XMLIdealGeometryESProducer(const edm::ParameterSet& iConfig)
   :   rootDDName_(iConfig.getParameter<std::string>("rootDDName")),
-      geomLabel_(iConfig.getParameter<std::string>("geomLabel"))
+      geomLabel_(iConfig.getParameter<edm::ESInputTag>("geomLabel"))
 {
    //the following line is needed to tell the framework what
    // data is being produced
