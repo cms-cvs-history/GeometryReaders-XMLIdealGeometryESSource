@@ -8,6 +8,8 @@
 <flags EDM_PLUGIN=1>
 <library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
 </library>
+<library file=ExtractXMLFile.cc name=testGeometryReadersXMLIdealGeometryESSource>
+</library>
 <library file=TestIdealGeometryESProducer.cc>
 </library>
 <library file=TestSpecParAnalyzer.cc>
