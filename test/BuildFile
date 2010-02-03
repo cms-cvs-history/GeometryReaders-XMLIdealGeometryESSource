@@ -6,9 +6,9 @@
 <use name=DetectorDescription/OfflineDBLoader>
 <use name=CondFormats/GeometryObjects>
 <flags EDM_PLUGIN=1>
-<library file=PerfectGeometryAnalyzer.cc name=testGeometryReadersXMLIdealGeometryESSource>
+<library file=PerfectGeometryAnalyzer.cc>
 </library>
-<library file=ExtractXMLFile.cc name=testGeometryReadersXMLIdealGeometryESSource>
+<library file=ExtractXMLFile.cc>
 </library>
 <library file=TestIdealGeometryESProducer.cc>
 </library>

@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.7 2009/11/05 17:15:51 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.8 2009/11/09 15:44:33 case Exp $
 //
 //
 
@@ -60,8 +60,8 @@ public:
   ReturnType produce(const IdealGeometryRecord&);
 private:
   // ----------member data ---------------------------
-  //  std::string label_;
   std::string rootDDName_; // this must be the form namespace:name
+  std::string label_;
     // 2009-07-09 memory patch
     // for copying and protecting DD Store's after parsing is complete.
     DDI::Store<DDName, DDI::Material*> matStore_;
@@ -84,13 +84,13 @@ private:
 // constructors and destructor
 //
 XMLIdealGeometryESProducer::XMLIdealGeometryESProducer(const edm::ParameterSet& iConfig)
-  :   rootDDName_(iConfig.getParameter<std::string>("rootDDName"))
-  //  :   label_(iConfig.getUntrackedParameter<std::string>("label","")),
+  :   rootDDName_(iConfig.getParameter<std::string>("rootDDName")),
+      label_(iConfig.getUntrackedParameter<std::string>("label",""))
 {
    //the following line is needed to tell the framework what
    // data is being produced
    setWhatProduced(this);
-
+   std::cout << "label_ = " << label_ << std::endl;
    //now do what ever other initialization is needed
 }
 
@@ -115,8 +115,17 @@ XMLIdealGeometryESProducer::produce(const IdealGeometryRecord& iRecord)
    using namespace edm::es;
 
    edm::ESHandle<GeometryFile> gdd;
-   iRecord.getRecord<GeometryFileRcd>().get( "", gdd );
-
+   iRecord.getRecord<GeometryFileRcd>().get( label_, gdd );
+   if ( gdd.isValid() ) {
+     std::cout << "gdd.isValid()" << std::endl; 
+     if (gdd.product() != 0) {
+       std::cout << "object address is not zero" << std::endl;
+     } else {
+       std::cout << "object address is zero" << std::endl;
+     }
+   } else {
+     std::cout << "gdd is NOT valid" << std::endl;
+   }
    DDCompactView cpv;
    DDLParser parser(cpv); //* parser = DDLParser::instance();
    parser.getDDLSAX2FileHandler()->setUserNS(true);
