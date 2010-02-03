@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.8 2009/11/09 15:44:33 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.8.2.1 2010/02/03 20:52:06 case Exp $
 //
 //
 
@@ -90,7 +90,6 @@ XMLIdealGeometryESProducer::XMLIdealGeometryESProducer(const edm::ParameterSet& 
    //the following line is needed to tell the framework what
    // data is being produced
    setWhatProduced(this);
-   std::cout << "label_ = " << label_ << std::endl;
    //now do what ever other initialization is needed
 }
 
@@ -116,16 +115,16 @@ XMLIdealGeometryESProducer::produce(const IdealGeometryRecord& iRecord)
 
    edm::ESHandle<GeometryFile> gdd;
    iRecord.getRecord<GeometryFileRcd>().get( label_, gdd );
-   if ( gdd.isValid() ) {
-     std::cout << "gdd.isValid()" << std::endl; 
-     if (gdd.product() != 0) {
-       std::cout << "object address is not zero" << std::endl;
-     } else {
-       std::cout << "object address is zero" << std::endl;
-     }
-   } else {
-     std::cout << "gdd is NOT valid" << std::endl;
-   }
+//    if ( gdd.isValid() ) {
+//      std::cout << "gdd.isValid()" << std::endl; 
+//      if (gdd.product() != 0) {
+//        std::cout << "object address is not zero" << std::endl;
+//      } else {
+//        std::cout << "object address is zero" << std::endl;
+//      }
+//    } else {
+//      std::cout << "gdd is NOT valid" << std::endl;
+//    }
    DDCompactView cpv;
    DDLParser parser(cpv); //* parser = DDLParser::instance();
    parser.getDDLSAX2FileHandler()->setUserNS(true);
