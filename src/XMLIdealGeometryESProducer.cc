@@ -13,7 +13,7 @@
 //
 // Original Author:  Mike Case
 //         Created:  Fri Jan 16 01:45:49 CET 2009
-// $Id: XMLIdealGeometryESProducer.cc,v 1.8.2.1 2010/02/03 20:52:06 case Exp $
+// $Id: XMLIdealGeometryESProducer.cc,v 1.8.2.2 2010/02/03 21:53:00 case Exp $
 //
 //
 
@@ -85,7 +85,7 @@ private:
 //
 XMLIdealGeometryESProducer::XMLIdealGeometryESProducer(const edm::ParameterSet& iConfig)
   :   rootDDName_(iConfig.getParameter<std::string>("rootDDName")),
-      label_(iConfig.getUntrackedParameter<std::string>("label",""))
+      label_(iConfig.getParameter<std::string>("label"))
 {
    //the following line is needed to tell the framework what
    // data is being produced
