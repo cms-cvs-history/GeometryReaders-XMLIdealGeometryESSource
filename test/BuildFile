@@ -16,4 +16,3 @@
 </library>
 <library file=TestCompareDDDumpFiles.cc>
 </library>
-<bin file=testprog.cc></bin>
